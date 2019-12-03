@@ -40,7 +40,7 @@ requirements:
     - r-dbi >=1.0.0
     - r-rcpp >=0.12.7
     - r-bit64
-    - r-blob >=1.1.1
+    - r-blob >=1.2.0
     - r-memoise
     - r-pkgconfig
     - r-plogr >=0.2.0
@@ -53,7 +53,7 @@ requirements:
     - r-dbi >=1.0.0
     - r-rcpp >=0.12.7
     - r-bit64
-    - r-blob >=1.1.1
+    - r-blob >=1.2.0
     - r-memoise
     - r-pkgconfig
     - r-plogr >=0.2.0
@@ -69,10 +69,9 @@ about:
   summary: Embeds the 'SQLite' database engine in R and provides an interface compliant with
     the 'DBI' package. The source for the 'SQLite' engine is included.
   license_family: LGPL
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-2'
 
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - dpryan79
-    - johanneskoester
-    - bgruening
