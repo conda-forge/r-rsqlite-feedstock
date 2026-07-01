@@ -51,6 +51,7 @@ requirements:
     - r-memoise
     - r-pkgconfig
     - r-plogr >=0.2.0
+    - libcurl
   run:
     - r-base
     # BH is the header-only part of Boost and thus a compile-time requirement only
