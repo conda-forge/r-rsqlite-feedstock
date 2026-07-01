@@ -1,4 +1,4 @@
-{% set version = "3.53.1" %}
+{% set version = "3.53.3" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/RSQLite_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/RSQLite/RSQLite_{{ version }}.tar.gz
-  sha256: 0f73240f6d935ce80fa5199684ff8bc86b827590ae85dc2a9ec1cc6049a26b7a
+  sha256: 82946aac5e2869da5fdaf57d0e4afeee3d4deac21d9eaeffb5f743273a93736c
 
 build:
   number: 0
@@ -20,14 +20,13 @@ build:
 requirements:
   build:
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
-    - r-bh                         # [build_platform != target_platform]
     - r-bit64                      # [build_platform != target_platform]
     - r-blob >=1.2.0               # [build_platform != target_platform]
-    - r-cpp11                      # [build_platform != target_platform]
-    - r-dbi >=1.1.0                # [build_platform != target_platform]
+    - r-cpp11 >=0.4.0              # [build_platform != target_platform]
+    - r-dbi >=1.2.0                # [build_platform != target_platform]
     - r-memoise                    # [build_platform != target_platform]
     - r-pkgconfig                  # [build_platform != target_platform]
-    - r-plogr >=0.2.0              # [build_platform != target_platform]
+    - r-rlang                      # [build_platform != target_platform]
     - {{ compiler('c') }}          # [not win]
     - {{ stdlib("c") }}            # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
@@ -35,31 +34,31 @@ requirements:
     - {{ compiler('cxx') }}        # [not win]
     - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
+    - {{ posix }}gawk
     - {{ posix }}make
+    - pkg-config
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
   host:
     - r-base
-    - r-bh
     - r-bit64
     - r-blob >=1.2.0
-    - r-cpp11
-    - r-dbi >=1.1.0
+    - r-cpp11 >=0.4.0
+    - r-dbi >=1.2.0
     - r-memoise
     - r-pkgconfig
-    - r-plogr >=0.2.0
+    - r-rlang
+    - libcurl
   run:
     - r-base
-    # BH is the header-only part of Boost and thus a compile-time requirement only
-    # - r-bh
     - r-bit64
     - r-blob >=1.2.0
-    - r-cpp11
-    - r-dbi >=1.1.0
+    - r-cpp11 >=0.4.0
+    - r-dbi >=1.2.0
     - r-memoise
     - r-pkgconfig
-    - r-plogr >=0.2.0
+    - r-rlang
 
 test:
   commands:
