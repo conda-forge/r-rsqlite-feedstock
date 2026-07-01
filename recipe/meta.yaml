@@ -20,14 +20,13 @@ build:
 requirements:
   build:
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
-    - r-bh                         # [build_platform != target_platform]
     - r-bit64                      # [build_platform != target_platform]
     - r-blob >=1.2.0               # [build_platform != target_platform]
-    - r-cpp11                      # [build_platform != target_platform]
-    - r-dbi >=1.1.0                # [build_platform != target_platform]
+    - r-cpp11 >=0.4.0              # [build_platform != target_platform]
+    - r-dbi >=1.2.0                # [build_platform != target_platform]
     - r-memoise                    # [build_platform != target_platform]
     - r-pkgconfig                  # [build_platform != target_platform]
-    - r-plogr >=0.2.0              # [build_platform != target_platform]
+    - r-rlang                      # [build_platform != target_platform]
     - {{ compiler('c') }}          # [not win]
     - {{ stdlib("c") }}            # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
@@ -43,26 +42,23 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
-    - r-bh
     - r-bit64
     - r-blob >=1.2.0
-    - r-cpp11
-    - r-dbi >=1.1.0
+    - r-cpp11 >=0.4.0
+    - r-dbi >=1.2.0
     - r-memoise
     - r-pkgconfig
-    - r-plogr >=0.2.0
+    - r-rlang
     - libcurl
   run:
     - r-base
-    # BH is the header-only part of Boost and thus a compile-time requirement only
-    # - r-bh
     - r-bit64
     - r-blob >=1.2.0
-    - r-cpp11
-    - r-dbi >=1.1.0
+    - r-cpp11 >=0.4.0
+    - r-dbi >=1.2.0
     - r-memoise
     - r-pkgconfig
-    - r-plogr >=0.2.0
+    - r-rlang
 
 test:
   commands:
